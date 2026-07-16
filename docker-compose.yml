@@ -1,0 +1,65 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sagekhan-portfolio-web:local
+    restart: unless-stopped
+    expose:
+      - "3000"
+    environment:
+      NODE_ENV: production
+    networks:
+      - sageforce
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  contact-api:
+    build:
+      context: ./services/contact-api
+      dockerfile: Dockerfile
+    image: sagekhan-portfolio-contact-api:local
+    restart: unless-stopped
+    expose:
+      - "4000"
+    env_file:
+      - .env
+    environment:
+      PORT: 4000
+      ALLOWED_ORIGIN: ${ALLOWED_ORIGIN:-*}
+    volumes:
+      - contact-data:/data
+    networks:
+      - sageforce
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:4000/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+  gateway:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    depends_on:
+      web:
+        condition: service_healthy
+      contact-api:
+        condition: service_healthy
+    ports:
+      - "${GATEWAY_PORT:-8080}:80"
+    volumes:
+      - ./gateway/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - sageforce
+
+networks:
+  sageforce:
+    driver: bridge
+
+volumes:
+  contact-data:

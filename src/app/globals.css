@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+:root {
+  /* Sage Force palette — derived from the TSF emblem */
+  --ink: #04211f;      /* near-black deep teal — dark base */
+  --pine: #0b3d38;     /* deep teal — panels on dark */
+  --pine-2: #0f4a43;   /* slightly lighter panel */
+  --signal: #00807c;   /* primary brand teal (emblem) */
+  --tide: #14c3b4;     /* bright teal accent */
+  --tide-2: #5fe2d3;   /* lighter bright accent for dark bg */
+  --mint: #cdf0ea;     /* pale mint surface */
+  --mint-2: #e3f7f2;   /* paler mint */
+  --paper: #f6fcfa;    /* near-white mint paper */
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --panel: #ffffff;
+  --panel-border: #cfe9e2;
+  --muted: #4b6b66;
+}
+
+.dark {
+  --background: var(--ink);
+  --foreground: var(--mint-2);
+  --panel: var(--pine);
+  --panel-border: #16554d;
+  --muted: #9fd3cb;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-pine: var(--pine);
+  --color-pine-2: var(--pine-2);
+  --color-signal: var(--signal);
+  --color-tide: var(--tide);
+  --color-tide-2: var(--tide-2);
+  --color-mint: var(--mint);
+  --color-mint-2: var(--mint-2);
+  --color-paper: var(--paper);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-panel: var(--panel);
+  --color-panel-border: var(--panel-border);
+  --color-muted: var(--muted);
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+}
+
+* {
+  border-color: var(--panel-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Faint watermark texture used behind hero / dossier headers */
+.deck-texture {
+  background-image:
+    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--signal) 18%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.manifest-row {
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--tide);
+  color: var(--ink);
+}
+
+/* Scrollbar tuning for the dossier feel */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--signal) 45%, transparent);
+  border-radius: 6px;
+}
