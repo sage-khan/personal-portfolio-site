@@ -97,11 +97,12 @@ export const mediaAppearances: MediaAppearance[] = [
   {
     id: "marketing-ia-podcast",
     title: "Open-Source AI & Agentic Marketing",
-    outlet: "Marketing e IA Podcast",
-    date: "2026",
+    outlet: "Marketing e IA Podcast (with Emilio)",
+    date: "25 Jun 2026",
     type: "Podcast",
     summary: "Bilingual (Spanish/English) episode on running enterprise-grade AI on open-source stacks and spotting 'agent washing' in marketing tools.",
     url: "https://open.spotify.com/episode/4nV5vZcevivcBffxeZefTi",
+    articleUrl: "https://thesagekhan.medium.com/enterprise-ai-without-the-enterprise-bill-the-expensive-part-of-ai-was-never-the-ai-13aa6f127f5f",
   },
   {
     id: "cyber-kids",

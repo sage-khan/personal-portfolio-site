@@ -69,12 +69,13 @@ export const books: Book[] = [
     subtitle: "A Comprehensive Guide for the Digital Age",
     status: "In Production",
     genre: "Nonfiction — AI Governance & Risk",
-    publisher: "Taylor & Francis",
-    date: "Forthcoming — due 31 Aug 2026",
-    identifier: "ISBN 9781041374497",
-    coAuthors: ["Haq Nawaz Khan", "Hameed Afzal"],
+    publisher: "Routledge (Auerbach Publications, Taylor & Francis Group)",
+    date: "Forthcoming — scheduled December 2026 (subject to change)",
+    identifier: "ISBN (Hardback) 9781041374497 · ISBN (Paperback) 9781041374503 · 272 pages",
+    url: "https://www.routledge.com/Third-Party-Risk-Assessment-with-AI-A-Comprehensive-Guide-for-the-Digital-Age/Afzal-Khan-Khan/p/book/9781041374503",
+    coAuthors: ["Hameed Afzal", "Haq Nawaz Khan"],
     description:
-      "A practitioner guide to modernizing Third-Party Risk Management (TPRM) with AI-driven continuous monitoring, vendor classification and criticality frameworks, industry-specific TPRM approaches, and AI-powered contract management and compliance.",
+      "A comprehensive, practitioner-oriented handbook to managing third-party risk in today's digital economy — how organizations assess, monitor, and mitigate vendor, supplier, and ecosystem risk as AI, cloud, and global supply chains reshape business models. Includes checklists, dashboards, risk-scoring models, and governance playbooks, with tailored approaches for finance, healthcare, energy, retail, government, and education, and practical applications of AI/ML in vendor intelligence, predictive risk modeling, and automated monitoring. Currently in copyediting; page proofs due September 2026.",
   },
   {
     id: "creative-capital",
